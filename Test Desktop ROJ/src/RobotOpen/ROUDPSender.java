@@ -11,6 +11,7 @@ import java.nio.ByteBuffer;
 import RobotOpen.Packet.HeartbeatPacket;
 import RobotOpen.Packet.JoystickPacket;
 import RobotOpen.Packet.Message;
+import RobotOpen.Packet.GetParameterPacket;
 
 
 public class ROUDPSender implements Runnable{
@@ -23,6 +24,7 @@ public class ROUDPSender implements Runnable{
 	private static  DatagramSocket 	socket;
 	private static  JoystickPacket		joysticks;
 	private static  HeartbeatPacket		heartbeat;
+	private static  GetParameterPacket		parameters;
 	
 	private static 	Message			message;
 	
@@ -32,14 +34,16 @@ public class ROUDPSender implements Runnable{
 		
 		
 		heartbeat = new HeartbeatPacket();
+		parameters = new GetParameterPacket();
+		
 		joysticks = joyStick;
 		
 		//joysticks.joy1[1] = 100;
 		
-		byte[] duh = new byte[1];
-		duh[0] = (byte) 0;
+		byte[] temp = new byte[1];
+		temp[0] = (byte) 0;
 		
-		packet = new DatagramPacket(duh, 1);	
+		packet = new DatagramPacket(temp, 1);	
 		
 		message = heartbeat;
 				
@@ -73,6 +77,10 @@ public class ROUDPSender implements Runnable{
 
 	public void HeartBeatMessage() {
 		message = heartbeat;		
+	}
+	
+	public void ParameterMessage() {
+		message = parameters;		
 	}
 
 	

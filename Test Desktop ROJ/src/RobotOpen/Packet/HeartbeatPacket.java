@@ -39,22 +39,9 @@ public class HeartbeatPacket implements Message{
 		
 		//Guts
 		buffer.clear();
-		buffer.order(ByteOrder.LITTLE_ENDIAN);
-		
+		buffer.order(ByteOrder.LITTLE_ENDIAN);		
 		buffer.put(something);
-		
-		
-		
-		
-	/*	
-		buffer.putChar('h');
-		buffer.put((byte) 0xEE); 
-		buffer.put((byte) 0x01);*/
-		//crc somehow ...? 
-		
-		
-		//System.out.println("BEEP...");
-		
+						
 		return buffer;
 	}
 	

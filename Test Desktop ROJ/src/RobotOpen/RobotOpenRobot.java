@@ -35,12 +35,9 @@ public class RobotOpenRobot {
 		udpSender = new ROUDPSender(joysticks, socket);			
 		udpReceiver = new ROUDPReceiver(socket);		
 		threadPool.scheduleWithFixedDelay(udpSender, 0, 100, TimeUnit.MILLISECONDS);
-		threadPool.scheduleWithFixedDelay(udpReceiver, 0, 50, TimeUnit.MILLISECONDS);
-		
+		threadPool.scheduleWithFixedDelay(udpReceiver, 0, 50, TimeUnit.MILLISECONDS);		
 	
 	}
-	
-	
 	
 	
 	
@@ -61,9 +58,9 @@ public class RobotOpenRobot {
 		udpSender.HeartBeatMessage();		
 	}
 	
-	
-	
-	
+	public void poll(){
+		udpSender.ParameterMessage();
+	}
 	
 	
 	
